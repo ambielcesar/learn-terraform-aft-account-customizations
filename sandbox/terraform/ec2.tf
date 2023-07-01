@@ -17,8 +17,10 @@ data "aws_ami" "ubuntu" {
 resource "aws_instance" "CTLab-Machine" {
   ami           = data.aws_ami.ubuntu.id
   instance_type = "t2.micro"
+  subnet_id     = var.subnet_private_id
 
   tags = {
     Name = "HelloWorld"
   }
 }
+
